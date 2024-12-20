@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Table</title>
+</head>
+<body >
+    <br>
+    <br>
+    <br>
+    <div class="container mt-5">
+    <label id="msg" class="text-success "></label>
+    <table id="tb" class="table table-striped table-bordered table-hover table-responsive">
+       <thead>
+        <tr>
+        <th>S.No</th>
+        <th>Student Name</th>
+        <th>Enrollment No.</th>
+        <th>Month</th>
+        <th>Room Charges</th>
+        <th>Mess Charges</th>
+        <th>
+            <input class="btn-primary" type="button" name="+" id="+" value="+" onclick="addrow()">
+        </th>
+        </tr>
+       </thead>
+    </table>
+    <button class="btn-primary " onclick="download()">Download</button>
+    <button class="btn-primary " onclick="upload()">Upload</button>
+    <button class="btn-primary " onclick="window.print()">Print</button>
+    </div>
+    <script>
+        function download(){
+            document.getElementById("msg").innerHTML="The excel is downloaded";
+        }
+        function upload(){
+            document.getElementById("msg").innerHTML="The excel is uploaded";
+        }
+        function addrow(){
+            Tb=document.getElementById("tb");
+            len=Tb.rows.length;
+            insert=Tb.insertRow(len);
+            Sno=document.createElement("input");
+            Sno.setAttribute("type","text");
+            Sno.setAttribute("value",len);
+            Sno.setAttribute("disabled","true");
+            Sname=document.createElement("input");
+            Sname.setAttribute("type","text");
+            Eno=document.createElement("input");
+            Eno.setAttribute("type","text");
+            mn=document.createElement("input");
+            mn.setAttribute("type","text");
+            rc=document.createElement("input");
+            rc.setAttribute("type","text");
+            mc=document.createElement("input");
+            mc.setAttribute("type","text");
+            btn=document.createElement("input");
+            btn.setAttribute("type","button");
+            btn.setAttribute("value","-");
+            btn.setAttribute("onclick","removerow("+len+")");
+            insert.insertCell(0).appendChild(Sno);
+            insert.insertCell(1).appendChild(Sname);
+            insert.insertCell(2).appendChild(Eno);
+            insert.insertCell(3).appendChild(mn);
+            insert.insertCell(4).appendChild(rc);
+            insert.insertCell(5).appendChild(mc);
+            insert.insertCell(6).appendChild(btn);
+        }
+        function removerow(){
+            event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode)
+        }
+    </script>
+</body>
+
+</html>
